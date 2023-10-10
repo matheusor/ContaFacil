@@ -1,9 +1,17 @@
+using ContaFacil.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+//importante não esquecer
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+
+//importante não esquecer
+
+builder.Services.AddDbContext<AppDbContex>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
